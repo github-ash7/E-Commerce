@@ -1,0 +1,87 @@
+{
+  "Routes": [
+
+    // User Service - User Account
+
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7004"
+        }
+      ],
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "Post", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7004"
+        }
+      ],
+      "UpstreamPathTemplate": "/user/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7004"
+        }
+      ],
+      "UpstreamPathTemplate": "/user/{id}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ]
+    },
+
+    // User Service - User Address
+
+    {
+      "DownstreamPathTemplate": "/api/user/{userId}/address",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7004"
+        }
+      ],
+      "UpstreamPathTemplate": "/user/{userId}/address",
+      "UpstreamHttpMethod": [ "Post", "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/user/{userId}/address/{addressId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7004"
+        }
+      ],
+      "UpstreamPathTemplate": "/user/{userId}/address/{addressId}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ]
+    },
+
+    // User Service - User Payment
+
+
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "7054"
+        }
+      ],
+      "UpstreamPathTemplate": "/product",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    }
+  ]
+}

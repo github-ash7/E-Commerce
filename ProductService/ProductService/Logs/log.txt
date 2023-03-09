@@ -1,0 +1,60 @@
+2023-02-09 12:03:46,000 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7054
+2023-02-09 12:03:46,035 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5054
+2023-02-09 12:03:46,058 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2023-02-09 12:03:46,064 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2023-02-09 12:03:46,069 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\ProductService
+2023-02-09 12:18:41,646 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Received request to get all product details
+2023-02-09 12:18:44,525 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (156ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[AvailableCount], [p].[Category], [p].[DateCreated], [p].[DateUpdated], [p].[Description], [p].[Image], [p].[IsActive], [p].[Name], [p].[Price], [p].[Visibility]
+FROM [Product] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[Visibility] = CAST(1 AS bit) AND [p].[AvailableCount] > 0
+ORDER BY [p].[Name]
+2023-02-09 12:18:44,818 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Returning all product records
+2023-02-09 12:24:04,979 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Received request to add new product
+2023-02-09 12:24:05,981 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (873ms) [Parameters=[@__name_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Product] AS [p]
+        WHERE [p].[Name] = @__name_0 AND [p].[IsActive] = CAST(1 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-02-09 12:24:06,692 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (404ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (Size = -1) (DbType = Binary), @p7='?' (DbType = Boolean), @p8='?' (Size = 4000), @p9='?' (DbType = Int32), @p10='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Product] ([Id], [AvailableCount], [Category], [DateCreated], [DateUpdated], [Description], [Image], [IsActive], [Name], [Price], [Visibility])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+2023-02-09 12:24:06,723 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Added a new product with the Id: fe0b7fc4-8804-4c5b-b387-814f8782ab7a
+2023-02-09 12:25:21,840 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Received request to get product information for the Id: fe0b7fc4-8804-4c5b-b387-814f8782ab7a
+2023-02-09 12:25:21,917 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (17ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[AvailableCount], [p].[Category], [p].[DateCreated], [p].[DateUpdated], [p].[Description], [p].[Image], [p].[IsActive], [p].[Name], [p].[Price], [p].[Visibility]
+FROM [Product] AS [p]
+WHERE [p].[Id] = @__productId_0 AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Visibility] = CAST(1 AS bit) AND [p].[AvailableCount] > 0
+2023-02-09 12:25:21,922 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Returning the complete product information with the Id: fe0b7fc4-8804-4c5b-b387-814f8782ab7a
+2023-02-09 12:25:57,047 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Received request to get product information for the Id: fe0b7fc4-8804-4c5b-b387-814f8782ab7b
+2023-02-09 12:25:57,054 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[AvailableCount], [p].[Category], [p].[DateCreated], [p].[DateUpdated], [p].[Description], [p].[Image], [p].[IsActive], [p].[Name], [p].[Price], [p].[Visibility]
+FROM [Product] AS [p]
+WHERE [p].[Id] = @__productId_0 AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Visibility] = CAST(1 AS bit) AND [p].[AvailableCount] > 0
+2023-02-09 12:25:57,115 [.NET ThreadPool Worker] ERROR Services.ProductService - No product has been found for the Id: fe0b7fc4-8804-4c5b-b387-814f8782ab7b
+2023-02-09 12:31:19,596 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Received request to verify a list of product Ids
+2023-02-09 12:31:19,629 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (28ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Product] AS [p]
+        WHERE [p].[Id] = @__productId_0 AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Visibility] = CAST(1 AS bit) AND [p].[AvailableCount] > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-02-09 12:31:19,632 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - All the products Ids are verified
+2023-02-09 12:31:38,148 [.NET ThreadPool Worker] INFO  AProductService.Controllers.ProductController - Received request to verify a list of product Ids
+2023-02-09 12:31:38,152 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Product] AS [p]
+        WHERE [p].[Id] = @__productId_0 AND [p].[IsActive] = CAST(1 AS bit) AND [p].[Visibility] = CAST(1 AS bit) AND [p].[AvailableCount] > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-02-09 12:31:38,156 [.NET ThreadPool Worker] ERROR Services.ProductService - No product has been found with the Id: 12a4e773-459d-457c-8fa9-56f28459bc78
+2023-02-09 12:31:38,158 [.NET ThreadPool Worker] ERROR AProductService.Controllers.ProductController - No product has been found with 12a4e773-459d-457c-8fa9-56f28459bc78 during verification

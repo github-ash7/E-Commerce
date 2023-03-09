@@ -1,0 +1,75 @@
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\bin\Debug\net6.0\Services.deps.json
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\bin\Debug\net6.0\Services.dll
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\bin\Debug\net6.0\Services.pdb
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\Services.dll
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\refint\Services.dll
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\Services.pdb
+E:\VS Solutions\Assignment - E-commerce site\User Service\Services\obj\Debug\net6.0\ref\Services.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Services.deps.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Services.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Services.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Abstractions.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Repository.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Repository.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.csproj.CopyComplete
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\refint\Services.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\Services.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\UserService\Services\obj\Debug\net6.0\ref\Services.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Services.deps.json
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Services.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Services.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Abstractions.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Repository.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Repository.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.csproj.CopyComplete
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\refint\Services.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\UserService\Services\obj\Debug\net6.0\ref\Services.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Services.deps.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Services.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Services.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Abstractions.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Repository.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Repository.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.csproj.CopyComplete
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\refint\Services.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\Services.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\Services\obj\Debug\net6.0\ref\Services.dll

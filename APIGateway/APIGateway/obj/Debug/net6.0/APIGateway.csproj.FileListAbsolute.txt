@@ -1,0 +1,72 @@
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\appsettings.Development.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\appsettings.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\ocelot.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.exe
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.deps.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.runtimeconfig.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\FluentValidation.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.OpenApi.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Ocelot.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.AssemblyInfo.cs
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.MvcApplicationPartsAssemblyInfo.cs
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.MvcApplicationPartsAssemblyInfo.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\staticwebassets.build.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\staticwebassets.development.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\scopedcss\bundle\APIGateway.styles.css
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.csproj.CopyComplete
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\refint\APIGateway.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.genruntimeconfig.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\APIGateway\APIGateway\obj\Debug\net6.0\ref\APIGateway.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\appsettings.Development.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\appsettings.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\ocelot.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.exe
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.deps.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.runtimeconfig.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\APIGateway.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\FluentValidation.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Microsoft.OpenApi.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Ocelot.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.AssemblyInfo.cs
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.MvcApplicationPartsAssemblyInfo.cs
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.MvcApplicationPartsAssemblyInfo.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\staticwebassets.build.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\staticwebassets.development.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\scopedcss\bundle\APIGateway.styles.css
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.csproj.CopyComplete
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\refint\APIGateway.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\APIGateway.genruntimeconfig.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\APIGateway\APIGateway\obj\Debug\net6.0\ref\APIGateway.dll

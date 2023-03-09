@@ -1,0 +1,36 @@
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\bin\Debug\net6.0\Entities.deps.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\Entities.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\Entities.AssemblyInfo.cs
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\Entities.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\refint\Entities.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\PurchaseService\Entities\obj\Debug\net6.0\ref\Entities.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\bin\Debug\net6.0\Entities.deps.json
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.AssemblyInfoInputs.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.AssemblyInfo.cs
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\refint\Entities.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\ref\Entities.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\bin\Debug\net6.0\Entities.deps.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.AssemblyInfo.cs
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\refint\Entities.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\Entities\obj\Debug\net6.0\ref\Entities.dll

@@ -1,0 +1,45 @@
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\bin\Debug\net6.0\Contracts.deps.json
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\bin\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\bin\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfo.cs
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\refint\Contracts.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\ref\Contracts.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - E-commerce site\E-commerce Site\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.CopyComplete
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Contracts.deps.json
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.AssemblyReference.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfoInputs.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfo.cs
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.CopyComplete
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\refint\Contracts.dll
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Microservices assignment\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\ref\Contracts.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Contracts.deps.json
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Entities.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\bin\Debug\net6.0\Entities.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.AssemblyReference.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfoInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfo.cs
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.CoreCompileInputs.cache
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.csproj.CopyComplete
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\refint\Contracts.dll
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\Contracts.pdb
+E:\VS Solutions\Assignment - Microservices\E-Commerce\ProductService\Contracts\obj\Debug\net6.0\ref\Contracts.dll

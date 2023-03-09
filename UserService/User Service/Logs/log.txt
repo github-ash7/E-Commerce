@@ -1,0 +1,37 @@
+2023-02-10 11:04:42,736 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7004
+2023-02-10 11:04:42,755 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5004
+2023-02-10 11:04:42,764 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2023-02-10 11:04:42,766 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2023-02-10 11:04:42,768 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: E:\VS Solutions\Assignment - Microservices\E-Commerce\UserService\User Service
+2023-02-10 11:06:10,002 [.NET ThreadPool Worker] INFO  UserService.Controllers.UserAddressController - Received request to get an address at f1517e64-d582-43b7-93fc-2f6b32babb77 for the user ID: ca3a9959-c74c-4f1b-94a2-048c113e3de0
+2023-02-10 11:06:10,073 [.NET ThreadPool Worker] ERROR Services.CommonService - User with ID: 3b2d1480-08c7-4337-96b5-3bd305966c38 has been given access to their resource
+2023-02-10 11:06:16,248 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (267ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__addressId_1='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[City], [a].[Country], [a].[DateCreated], [a].[DateUpdated], [a].[IsActive], [a].[Line1], [a].[Line2], [a].[Name], [a].[Phone], [a].[Pincode], [a].[State], [a].[Type], [a].[UserId]
+FROM [Address] AS [a]
+WHERE [a].[UserId] = @__userId_0 AND [a].[Id] = @__addressId_1 AND [a].[IsActive] = CAST(1 AS bit)
+2023-02-10 11:08:16,909 [.NET ThreadPool Worker] INFO  UserService.Controllers.UserAddressController - Received request to get all saved addresses for the user ID: ca3a9959-c74c-4f1b-94a2-048c113e3de0
+2023-02-10 11:08:16,912 [.NET ThreadPool Worker] ERROR Services.CommonService - User with ID: 3b2d1480-08c7-4337-96b5-3bd305966c38 has been given access to their resource
+2023-02-10 11:08:16,959 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (34ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[City], [a].[Country], [a].[DateCreated], [a].[DateUpdated], [a].[IsActive], [a].[Line1], [a].[Line2], [a].[Name], [a].[Phone], [a].[Pincode], [a].[State], [a].[Type], [a].[UserId]
+FROM [Address] AS [a]
+WHERE [a].[UserId] = @__userId_0 AND [a].[IsActive] = CAST(1 AS bit)
+2023-02-10 11:08:16,978 [.NET ThreadPool Worker] INFO  UserService.Controllers.UserAddressController - Returning all saved address records for the user ID: ca3a9959-c74c-4f1b-94a2-048c113e3de0. Total records: 1
+2023-02-10 11:08:24,548 [.NET ThreadPool Worker] INFO  UserService.Controllers.UserAddressController - Received request to delete an address at f1517e64-d582-43b7-93fc-2f6b32babb77 for the user ID: ca3a9959-c74c-4f1b-94a2-048c113e3de0
+2023-02-10 11:08:24,553 [.NET ThreadPool Worker] ERROR Services.CommonService - User with ID: 3b2d1480-08c7-4337-96b5-3bd305966c38 has been given access to their resource
+2023-02-10 11:08:24,615 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__addressId_1='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[City], [a].[Country], [a].[DateCreated], [a].[DateUpdated], [a].[IsActive], [a].[Line1], [a].[Line2], [a].[Name], [a].[Phone], [a].[Pincode], [a].[State], [a].[Type], [a].[UserId]
+FROM [Address] AS [a]
+WHERE [a].[UserId] = @__userId_0 AND [a].[Id] = @__addressId_1 AND [a].[IsActive] = CAST(1 AS bit)
+2023-02-10 11:08:25,222 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (418ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Address] SET [IsActive] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2023-02-10 11:08:29,163 [.NET ThreadPool Worker] INFO  UserService.Controllers.UserAddressController - Received request to get an address at f1517e64-d582-43b7-93fc-2f6b32babb77 for the user ID: ca3a9959-c74c-4f1b-94a2-048c113e3de0
+2023-02-10 11:08:29,168 [.NET ThreadPool Worker] ERROR Services.CommonService - User with ID: 3b2d1480-08c7-4337-96b5-3bd305966c38 has been given access to their resource
+2023-02-10 11:08:29,175 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__addressId_1='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[City], [a].[Country], [a].[DateCreated], [a].[DateUpdated], [a].[IsActive], [a].[Line1], [a].[Line2], [a].[Name], [a].[Phone], [a].[Pincode], [a].[State], [a].[Type], [a].[UserId]
+FROM [Address] AS [a]
+WHERE [a].[UserId] = @__userId_0 AND [a].[Id] = @__addressId_1 AND [a].[IsActive] = CAST(1 AS bit)
+2023-02-10 11:08:29,178 [.NET ThreadPool Worker] ERROR Services.UserAddressService - No address found at f1517e64-d582-43b7-93fc-2f6b32babb77 for the user Id: ca3a9959-c74c-4f1b-94a2-048c113e3de0

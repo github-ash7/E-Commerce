@@ -1,0 +1,182 @@
+2023-02-09 12:05:24,080 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7113
+2023-02-09 12:05:24,098 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5113
+2023-02-09 12:05:24,107 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2023-02-09 12:05:24,111 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2023-02-09 12:05:24,113 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: E:\VS Solutions\Assignment - Microservices\E-Commerce\PurchaseService\APurchaseService
+2023-02-09 12:26:28,905 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.WishListController - Received request to create a wish list for a user
+2023-02-09 12:26:28,942 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:26:28,950 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:26:29,354 [6] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 392.0992ms - 200
+2023-02-09 12:26:29,358 [6] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 430.1943ms - 200
+2023-02-09 12:26:32,082 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (163ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__name_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [WishList] AS [w]
+        WHERE [w].[UserId] = @__userId_0 AND [w].[Name] = @__name_1 AND [w].[IsActive] = CAST(1 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-02-09 12:26:32,136 [.NET ThreadPool Worker] ERROR Services.WishListService - Wish list name already exists for the user Id: a85b1a72-e556-4760-a657-71167c5a2d18
+2023-02-09 12:26:44,116 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.WishListController - Received request to get all wish lists of a user
+2023-02-09 12:26:44,118 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:26:44,120 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:26:44,137 [8] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 14.3546ms - 200
+2023-02-09 12:26:44,139 [8] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 20.5821ms - 200
+2023-02-09 12:26:44,406 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (36ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [w].[Id], [w].[DateCreated], [w].[DateUpdated], [w].[IsActive], [w].[Name], [w].[Quantity], [w].[UserId], [t].[Id], [t].[DateCreated], [t].[DateUpdated], [t].[IsActive], [t].[ProductId], [t].[WishListId]
+FROM [WishList] AS [w]
+LEFT JOIN (
+    SELECT [w0].[Id], [w0].[DateCreated], [w0].[DateUpdated], [w0].[IsActive], [w0].[ProductId], [w0].[WishListId]
+    FROM [WishListItem] AS [w0]
+    WHERE [w0].[IsActive] = CAST(1 AS bit)
+) AS [t] ON [w].[Id] = [t].[WishListId]
+WHERE [w].[UserId] = @__userId_0 AND [w].[IsActive] = CAST(1 AS bit)
+ORDER BY [w].[Id]
+2023-02-09 12:26:44,601 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.WishListController - All wish lists has been fetched and returned for the user
+2023-02-09 12:31:19,342 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.WishListController - Received request to create a wish list for a user
+2023-02-09 12:31:19,345 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:31:19,370 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:31:19,429 [19] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 55.9843ms - 200
+2023-02-09 12:31:19,431 [19] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 86.3845ms - 200
+2023-02-09 12:31:19,496 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__name_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [WishList] AS [w]
+        WHERE [w].[UserId] = @__userId_0 AND [w].[Name] = @__name_1 AND [w].[IsActive] = CAST(1 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-02-09 12:31:19,540 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request POST https://localhost:7054/api/product/verify
+2023-02-09 12:31:19,544 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request POST https://localhost:7054/api/product/verify
+2023-02-09 12:31:19,642 [8] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 94.7738ms - 200
+2023-02-09 12:31:19,645 [8] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 105.1001ms - 200
+2023-02-09 12:31:19,886 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (DbType = Int32), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (DbType = DateTime2), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [WishList] ([Id], [DateCreated], [DateUpdated], [IsActive], [Name], [Quantity], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+INSERT INTO [WishListItem] ([Id], [DateCreated], [DateUpdated], [IsActive], [ProductId], [WishListId])
+VALUES (@p7, @p8, @p9, @p10, @p11, @p12);
+2023-02-09 12:31:19,918 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.WishListController - Successfully created a wish list for the user with the Id: 63bf9140-2cf3-4a96-afc1-4b2579f3a29b
+2023-02-09 12:31:32,374 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.WishListController - Received request to create a wish list for a user
+2023-02-09 12:31:32,376 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:31:32,378 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:31:32,391 [19] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 9.8714ms - 200
+2023-02-09 12:31:32,393 [19] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 17.1628ms - 200
+2023-02-09 12:31:32,396 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__name_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [WishList] AS [w]
+        WHERE [w].[UserId] = @__userId_0 AND [w].[Name] = @__name_1 AND [w].[IsActive] = CAST(1 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-02-09 12:31:32,398 [.NET ThreadPool Worker] ERROR Services.WishListService - Wish list name already exists for the user Id: a85b1a72-e556-4760-a657-71167c5a2d18
+2023-02-09 12:31:38,099 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.WishListController - Received request to create a wish list for a user
+2023-02-09 12:31:38,101 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:31:38,104 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:31:38,126 [24] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 20.0765ms - 200
+2023-02-09 12:31:38,129 [24] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 27.3908ms - 200
+2023-02-09 12:31:38,132 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__name_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [WishList] AS [w]
+        WHERE [w].[UserId] = @__userId_0 AND [w].[Name] = @__name_1 AND [w].[IsActive] = CAST(1 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-02-09 12:31:38,134 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request POST https://localhost:7054/api/product/verify
+2023-02-09 12:31:38,137 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request POST https://localhost:7054/api/product/verify
+2023-02-09 12:31:38,168 [24] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 29.562ms - 404
+2023-02-09 12:31:38,170 [24] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 36.3416ms - 404
+2023-02-09 12:31:38,369 [.NET ThreadPool Worker] ERROR Services.CommonService - No product has been founded at 12a4e773-459d-457c-8fa9-56f28459bc78
+2023-02-09 12:32:32,076 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.CartController - Received request get all products in cart of a user
+2023-02-09 12:32:32,079 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:32:32,083 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:32:32,290 [24] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 203.7751ms - 200
+2023-02-09 12:32:32,292 [24] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 213.5533ms - 200
+2023-02-09 12:32:32,568 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (267ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[DateCreated], [c].[DateUpdated], [c].[IsActive], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Cart] AS [c]
+WHERE [c].[UserId] = @__userId_0 AND [c].[IsActive] = CAST(1 AS bit)
+2023-02-09 12:32:32,585 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.CartController - Returned all products in cart of the user
+2023-02-09 12:38:34,977 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.OrderController - Received request to place an order for a user
+2023-02-09 12:38:35,227 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:38:35,229 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:38:35,407 [24] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 175.3097ms - 200
+2023-02-09 12:38:35,410 [24] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 320.0759ms - 200
+2023-02-09 12:38:35,421 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[DateCreated], [c].[DateUpdated], [c].[IsActive], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Cart] AS [c]
+WHERE [c].[UserId] = @__userId_0 AND [c].[IsActive] = CAST(1 AS bit)
+2023-02-09 12:38:35,424 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/address/9b58d0dc-22ae-426f-9681-211b8329aeed/verify
+2023-02-09 12:38:35,426 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/address/9b58d0dc-22ae-426f-9681-211b8329aeed/verify
+2023-02-09 12:38:36,556 [16] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 1127.2046ms - 404
+2023-02-09 12:38:36,558 [16] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 1134.0881ms - 404
+2023-02-09 12:38:36,564 [.NET ThreadPool Worker] ERROR Services.CommonService - No address found at 9b58d0dc-22ae-426f-9681-211b8329aeed for the user at a85b1a72-e556-4760-a657-71167c5a2d18
+2023-02-09 12:40:39,401 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.OrderController - Received request to place an order for a user
+2023-02-09 12:40:39,512 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:40:39,514 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:40:39,842 [26] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 325.164ms - 200
+2023-02-09 12:40:39,851 [26] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 446.5604ms - 200
+2023-02-09 12:40:39,858 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[DateCreated], [c].[DateUpdated], [c].[IsActive], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Cart] AS [c]
+WHERE [c].[UserId] = @__userId_0 AND [c].[IsActive] = CAST(1 AS bit)
+2023-02-09 12:40:39,860 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/address/9b58d0dc-22ae-426f-9681-211b8329aeed/verify
+2023-02-09 12:40:39,862 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/address/9b58d0dc-22ae-426f-9681-211b8329aeed/verify
+2023-02-09 12:40:40,517 [24] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 652.0109ms - 404
+2023-02-09 12:40:40,521 [24] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 659.0771ms - 404
+2023-02-09 12:40:40,524 [.NET ThreadPool Worker] ERROR Services.CommonService - No address found at 9b58d0dc-22ae-426f-9681-211b8329aeed for the user at a85b1a72-e556-4760-a657-71167c5a2d18
+2023-02-09 12:41:23,882 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.OrderController - Received request to place an order for a user
+2023-02-09 12:41:23,888 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:41:23,893 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:41:24,092 [17] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 197.5817ms - 200
+2023-02-09 12:41:24,094 [17] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 209.8351ms - 200
+2023-02-09 12:41:24,100 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[DateCreated], [c].[DateUpdated], [c].[IsActive], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Cart] AS [c]
+WHERE [c].[UserId] = @__userId_0 AND [c].[IsActive] = CAST(1 AS bit)
+2023-02-09 12:41:24,103 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/address/bbbc2e40-f2cb-4570-9e1b-dd3f5ee7bd6a/verify
+2023-02-09 12:41:24,106 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/address/bbbc2e40-f2cb-4570-9e1b-dd3f5ee7bd6a/verify
+2023-02-09 12:41:24,127 [17] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 17.9772ms - 200
+2023-02-09 12:41:24,129 [17] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 26.4052ms - 200
+2023-02-09 12:41:25,107 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (852ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Boolean), @p3='?' (DbType = Guid), @p2='?' (DbType = Boolean), @p4='?' (DbType = Guid), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Boolean), @p9='?' (DbType = Guid), @p10='?' (Size = 4000), @p11='?' (DbType = Int32), @p12='?' (DbType = Guid), @p13='?' (DbType = Guid), @p14='?' (DbType = DateTime2), @p15='?' (DbType = DateTime2), @p16='?' (DbType = Boolean), @p17='?' (DbType = Guid), @p18='?' (DbType = Guid), @p19='?' (DbType = Int32), @p20='?' (Size = 4000), @p21='?' (DbType = Guid), @p22='?' (DbType = DateTime2), @p23='?' (DbType = DateTime2), @p24='?' (DbType = Boolean), @p25='?' (DbType = Guid), @p26='?' (DbType = Guid), @p27='?' (DbType = Int32), @p28='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Cart] SET [IsActive] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [Cart] SET [IsActive] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+INSERT INTO [Order] ([Id], [AddressId], [DateCreated], [DateUpdated], [IsActive], [PaymentId], [PaymentMethod], [Total], [UserId])
+VALUES (@p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+INSERT INTO [OrderItem] ([Id], [DateCreated], [DateUpdated], [IsActive], [OrderId], [ProductId], [Quantity], [Status])
+VALUES (@p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20),
+(@p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28);
+2023-02-09 12:41:25,115 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.OrderController - Successfully placed an order for the user with the order Id: Entities.Dtos.IdentityResponseDto
+2023-02-09 12:41:36,627 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.CartController - Received request get all products in cart of a user
+2023-02-09 12:41:36,631 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:41:36,633 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:41:36,651 [17] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 15.5637ms - 200
+2023-02-09 12:41:36,653 [17] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 24.151ms - 200
+2023-02-09 12:41:36,657 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[DateCreated], [c].[DateUpdated], [c].[IsActive], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Cart] AS [c]
+WHERE [c].[UserId] = @__userId_0 AND [c].[IsActive] = CAST(1 AS bit)
+2023-02-09 12:41:36,659 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.CartController - No product has been found in the user's cart
+2023-02-09 12:41:46,882 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.OrderController - Received request to get complete order history of a user
+2023-02-09 12:41:46,886 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - Start processing HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:41:46,889 [.NET ThreadPool Worker] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Sending HTTP request GET https://localhost:7004/api/user/a85b1a72-e556-4760-a657-71167c5a2d18/verify
+2023-02-09 12:41:46,922 [23] INFO  System.Net.Http.HttpClient.Default.ClientHandler - Received HTTP response headers after 30.2791ms - 200
+2023-02-09 12:41:46,925 [23] INFO  System.Net.Http.HttpClient.Default.LogicalHandler - End processing HTTP request after 39.1092ms - 200
+2023-02-09 12:41:46,959 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddressId], [o].[DateCreated], [o].[DateUpdated], [o].[IsActive], [o].[PaymentId], [o].[PaymentMethod], [o].[Total], [o].[UserId], [t].[Id], [t].[DateCreated], [t].[DateUpdated], [t].[IsActive], [t].[OrderId], [t].[ProductId], [t].[Quantity], [t].[Status]
+FROM [Order] AS [o]
+LEFT JOIN (
+    SELECT [o0].[Id], [o0].[DateCreated], [o0].[DateUpdated], [o0].[IsActive], [o0].[OrderId], [o0].[ProductId], [o0].[Quantity], [o0].[Status]
+    FROM [OrderItem] AS [o0]
+    WHERE [o0].[IsActive] = CAST(1 AS bit)
+) AS [t] ON [o].[Id] = [t].[OrderId]
+WHERE [o].[UserId] = @__userId_0 AND [o].[IsActive] = CAST(1 AS bit)
+ORDER BY [o].[Id]
+2023-02-09 12:41:46,974 [.NET ThreadPool Worker] INFO  APurchaseService.Controllers.OrderController - Complete order history has been fetched and returned for the user
