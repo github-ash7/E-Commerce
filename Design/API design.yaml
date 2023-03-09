@@ -1,0 +1,2883 @@
+openapi: 3.0.3
+
+info:
+  title: E-commerce Site - OpenAPI 3.0
+  description: E-commerce website with a customer sign in, product catalog, cart & wish list pages
+  version: 1.0.11
+
+tags:
+  - name: user  
+    description: Operations about user
+  - name: product
+    description: Access to e-commerce site's products
+  - name: purchase
+    description: Handles cart, wish list and order details of user
+    
+servers:
+  - url: /api
+    
+paths:
+
+  /user:
+    post:
+      tags:
+        - user
+      summary: Create a user account
+      description: User can create an account in the site as a customer/admin 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAccountCreateDto'
+        required: true
+      responses:
+        '201':
+          description: User account has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityResponseDto'
+        '409':
+          description: User already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 409
+                  message:
+                    type: string
+                    example: Conflict
+                  description:
+                    type: string
+                    example: User already exists
+        '400':
+          description: Bad request object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: Bad request 
+                  description:
+                    type: string
+                    example: Server cannot process the request
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+              
+    get:
+      tags:
+        - user
+      summary: Get all user account information 
+      description: Admins have the complete access to the account information of all users in the site
+      responses:
+        '200':
+          description: Successful operation, complete user account information has been returned 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAccountResponseDto'
+        '204':
+          description: No user account has been found
+          
+        '403':
+            description: Only admin has the access
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 403
+                    message:
+                      type: string
+                      example: Forbidden
+                    description:
+                      type: string
+                      example: Only admin has the access
+                      
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+           description: Internal server error
+           content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+          
+  /user/login:
+    post:
+      tags:
+        - user
+      summary: Authentication
+      description: Authenticates the user and returns the token to access other APIs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAccountLogInDto'
+
+        required: true
+      responses:
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '200':
+          description: Login success and the access token has been returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponseDto'
+        '400':
+          description: Bad request object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: Bad request 
+                  description:
+                    type: string
+                    example: Server cannot process the request
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+
+  /user/{user-id}:
+    get:
+      tags:
+        - user
+      summary: Get user account information by id
+      description: User can access their account information 
+      parameters:
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+      responses:
+        '200':
+          description: Successful operation, user account information has been returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAccountResponseDto'
+        '404':
+            description: No user account has been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No user account has been found
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+          
+    put:
+      tags:
+        - user
+      summary: Update existing user information
+      description: Completely update an existing user information
+      parameters:
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+      requestBody:
+        description: Provide all the fields in address
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAccountUpdateDto'
+        required: true
+      responses:
+        '200':
+          description: User account information has been updated successfully
+        '400':
+          description: Bad request object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: Bad request 
+                  description:
+                    type: string
+                    example: Server cannot process the request
+        '409':
+          description: User already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 409
+                  message:
+                    type: string
+                    example: Conflict
+                  description:
+                    type: string
+                    example: User already exists
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+    
+    delete:
+      tags:
+        - user
+      summary: Delete a user account
+      description: Delete a user account by id
+      parameters:
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+      responses:
+        '404':
+            description: No user account has been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: Server cannot find the user account 
+        '200':
+          description: User account has been deleted successfully
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+  
+
+  /user/{user-id}/address:
+    post:
+      tags:
+        - user
+      summary: Create an address
+      description: Stores user address
+      parameters:
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAddressCreateDto'
+        required: true
+      responses:
+        '201':
+          description: Address has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityResponseDto'
+        '400':
+          description: Bad request object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: Bad request 
+                  description:
+                    type: string
+                    example: Server cannot process the request
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+          
+    get:
+      tags:
+        - user
+      summary: Get all address of a user
+      description: Get all address of a user
+      parameters:
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+      responses:
+        '200':
+          description: Successful operation, complete address of user has been returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAddressResponseDto'
+        '204':
+          description: No address has been found
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+          
+  /user/{user-id}/address/{address-id}:
+    get:
+      tags:
+        - user
+      summary: Get an address by id
+      description: Get an address by id 
+      parameters:
+      
+        - name: user-id
+          in: path
+          description: Id of user 
+          required: true
+          schema:
+              type: string
+              format: uuid
+              
+        - name: address-id
+          in: path
+          description: Id of address 
+          required: true
+          schema:
+              type: string
+              format: uuid
+      responses:
+        '200':
+          description: Successful operation, address has been returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddressResponseDto'          
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '404':
+            description: No address has been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No address has been found
+    
+    put:
+      tags:
+        - user
+      summary: Update an existing address
+      description: Completely update an existing address by its id
+      parameters:
+      
+        - name: user-id
+          in: path
+          description: Id of user 
+          required: true
+          schema:
+              type: string
+              format: uuid
+              
+        - name: address-id
+          in: path
+          description: Id of address to update
+          required: true
+          schema:
+              type: string
+              format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAddressUpdateDto'
+        required: true
+      responses:
+        '200':
+          description: User address information has been updated successfully
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '400':
+          description: Bad request object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                  message:
+                    type: string
+                    example: Bad request 
+                  description:
+                    type: string
+                    example: Server cannot process the request
+        '404':
+            description: No address has been found for the given id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No address has been found for the given id
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+    
+    delete:
+      tags:
+        - user
+      summary: Delete an address
+      description: Delete an address by Id
+      parameters:
+        - name: user-id
+          in: path
+          description: Id of user 
+          required: true
+          schema:
+              type: string
+              format: uuid
+              
+        - name: address-id
+          in: path
+          description: Address id to delete
+          required: true
+          schema:
+              type: string
+              format: uuid
+      responses:
+        '404':
+            description: No address has been found for the given id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No address has been found for the given id
+        '200':
+          description: Address has been deleted successfully
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+          
+
+  /user/{user-id}/payment:
+    post:
+        tags:
+          - user
+        summary: Create a payment information
+        description: User payment information (credit/debit/UPI) is stored
+        parameters:
+        - name: user-id
+          in: path
+          description: Id of user 
+          required: true
+          schema:
+              type: string
+              format: uuid
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPaymentCreateDto'
+          required: true
+        responses:
+          '201':
+            description: Payment information has been created successfully
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/IdentityResponseDto'
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '409':
+            description: Payment information name already exists
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 409
+                    message:
+                      type: string
+                      example: Conflict
+                    description:
+                      type: string
+                      example: Payment information name already exists
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+    get:
+      tags:
+        - user
+      summary: Get all payment information 
+      description: Get all payment information of a user
+      parameters:
+        - name: user-id
+          in: path
+          description: Id of user 
+          required: true
+          schema:
+              type: string
+              format: uuid
+      responses:
+        '200':
+          description: Successful operation, complete payment information of a user has been returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserPaymentResponseDto'
+        '204':
+          description: No payment information has been found
+        '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 500
+                  message:
+                    type: string
+                    example: Internal server error
+                  description:
+                    type: string
+                    example: Server encountered an unexpected condition
+          
+  /user/{user-id}/payment/{payment-id}:
+      get:
+        tags:
+          - user
+        summary: Get a payment information by Id
+        description: Get payment information of a user by their payment detail id
+        parameters:
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+                
+          - name: payment-id
+            in: path
+            description: Id of payment to return
+            required: true
+            schema:
+              type: string
+              format: uuid
+        responses:
+          '200':
+            description: Successful operation, user payment information has been returned
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/UserPaymentResponseDto'          
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '404':
+            description: Payment information has not been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: Payment information has not been found
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+    
+      put:
+        tags:
+          - user
+        summary: Update an existing payment information
+        description: Completely update an existing payment information of a user
+        parameters:
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+                  
+          - name: payment-id
+            in: path
+            description: Id of payment information to update
+            required: true
+            schema:
+              type: string
+              format: uuid
+              
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPaymentUpdateDto'
+          required: true
+        responses:
+          '200':
+            description: User payment information has been updated successfully
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '404':
+            description: No payment information found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: Payment information has not been found
+
+          '409':
+            description: Payment information name already exists
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 409
+                    message:
+                      type: string
+                      example: Conflict
+                    description:
+                      type: string
+                      example: Payment information name already exists
+                      
+                      
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+      
+      delete:
+        tags:
+          - user
+        summary: Delete a payment information
+        description: Delete a payment information of a user
+        parameters:
+        
+          - name: user-id
+            in: path
+            description: Id of user 
+            required: true
+            schema:
+                type: string
+                format: uuid
+                
+          - name: payment-id
+            in: path
+            description: Id of payment
+            required: true
+            schema:
+                type: string
+                format: uuid
+        responses:
+          '404':
+            description: No payment information has been found for the given id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No payment information has been found for the given id
+
+          '200':
+            description: Payment information has been deleted successfully
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+
+  /product:
+      post:
+        tags:
+          - product
+        summary: Create a product 
+        description: Create a product information on site
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCreateDto'
+          required: true
+        responses:
+          '201':
+            description: Product information has been created successfully
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/IdentityResponseDto'
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+            
+          '403':
+            description: Only admin has the access
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 403
+                    message:
+                      type: string
+                      example: Forbidden
+                    description:
+                      type: string
+                      example: Only admin has the access
+
+          '409':
+            description: Product already exists with the same name
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 409
+                    message:
+                      type: string
+                      example: Conflict
+                    description:
+                      type: string
+                      example: Product already exists with the same name
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+      get:
+        tags:
+          - product
+        summary: Get all products on the site
+        description: Get complete product list based on available count/visibility
+        responses:
+          '200':
+            description: Successful operation, complete product list has been returned
+            content:
+              application/json:
+                schema:
+                    type: array
+                    items :
+                      $ref: '#/components/schemas/ProductResponseDto'
+          '204':
+            description: No product has been added to the site
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+      
+  /product/{product-id}:
+      get:
+        tags:
+          - product
+        summary: Get a product information by id
+        description: Get a product information by id
+        parameters:
+          - name: product-id
+            in: path
+            description: Id of product 
+            required: true
+            schema:
+              type: string
+              format: uuid
+        responses:
+          '200':
+            description: Successful operation, product information has been returned
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ProductResponseDto'   
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '404':
+            description: No product has been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No product has been found
+
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+      put:
+        tags:
+          - product
+        summary: Update an existing product information
+        description: Admins can completely update an existing product information
+        parameters:
+          - name: product-id
+            in: path
+            description: Id of product to update
+            required: true
+            schema:
+              type: string
+              format: uuid
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductUpdateDto'
+          required: true
+        responses:
+          '200':
+            description: Successful operation
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+            
+          '403':
+            description: Only admin has the access
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 403
+                    message:
+                      type: string
+                      example: Forbidden
+                    description:
+                      type: string
+                      example: Only admin has the access
+
+          '404':
+            description: No product information has been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No product information has been found
+
+          '409':
+            description: Product already exists with the same name
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 409
+                    message:
+                      type: string
+                      example: Conflict
+                    description:
+                      type: string
+                      example: Product already exists with the same name
+                      
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+      
+      delete:
+        tags:
+          - product
+        summary: Delete a product information
+        description: Admins can delete a product from the site 
+        parameters:
+          - name: product-id
+            in: path
+            description: Product id to delete
+            required: true
+            schema:
+                type: string
+                format: uuid
+        responses:
+          '404':
+            description: No product has been found for the given id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No product has been found for the given id
+
+          '200':
+            description: Product has been deleted successfully
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '403':
+            description: Only admin has the access
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 403
+                    message:
+                      type: string
+                      example: Forbidden
+                    description:
+                      type: string
+                      example: Only admin has the access
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+
+
+  /wishlist:
+      post:
+        tags:
+          - purchase
+        summary: Create a wish list
+        description: Customer can add products to a wish list and group them with a name of their choice
+        requestBody:
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/WishlistCreateDto'
+          required: true
+        responses:
+          '201':
+            description: Wishlist has been created successfully
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/IdentityResponseDto'
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '409':
+            description: Wish list already exists
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 409
+                    message:
+                      type: string
+                      example: Conflict
+                    description:
+                      type: string
+                      example: Wish list already exists with the same name
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+      get:
+        tags:
+          - purchase
+        summary: Get complete wish list information of a user
+        description: Get complete wish list information of a user
+        responses:
+          '200':
+            description: Successful operation, complete wish list information has been returned
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/WishlistResponseDto'
+          '204':
+            description: No wish list has been found for the user
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+  /wishlist/{wishlist-id}:
+      get:
+        tags:
+          - purchase
+        summary: Get wish list information by id
+        description: Get wish list information by id
+        parameters:
+          - name: wishlist-id
+            in: path
+            description: Id of wishlist 
+            required: true
+            schema:
+              type: string
+              format: uuid
+        responses:
+          '200':
+            description: Successful operation, wish list information has been returned
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/WishlistResponseDto'   
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '404':
+            description: No wish list has been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No wish list has been found
+
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+      put:
+        tags:
+          - purchase
+        summary: Update a existing wish list
+        description: Update a wish list by adding or removing products from it
+        parameters:
+          - name: wishlist-id
+            in: path
+            description: Id of wish list to update
+            required: true
+            schema:
+              type: string
+              format: uuid
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WishlistUpdateDto'
+          required: true
+        responses:
+          '200':
+            description: Wish list has been updated successfully
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '404':
+            description: No wish list information has been found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No wish list information has been found
+
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+      delete:
+        tags:
+          - purchase
+        summary: Delete an entire wish list
+        description: Delete a complete wish list with its products
+        parameters:
+          - name: wishlist-id
+            in: path
+            description: Wishlist id to delete
+            required: true
+            schema:
+                type: string
+                format: uuid
+        responses:
+          '404':
+            description: No wish list has been found with the given id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No wish list has been found with the given id
+
+          '200':
+            description: Wish list has been deleted successfully
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+
+  /cart:
+    post:
+        tags:
+          - purchase
+        summary: Add product to cart
+        description: Customers can add product to their cart with its quantity
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddToCartDto'
+          required: true
+        responses:
+          '201':
+            description: Product has been added to the cart
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+            
+    get:
+        tags:
+          - purchase
+        summary: Get all products from cart
+        description: Get all products from cart of a customer
+        responses:
+          '200':
+            description: Successful operation, all the products from the cart has been returned
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/CartResponseDto'
+          '204':
+            description: No product has been added to the cart
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+
+    put:
+        tags:
+          - purchase
+        summary: Update cart information
+        description: Update cart information of a customer
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartUpdateDto'
+          required: true
+        responses:
+          '200':
+            description: Cart has been updated successfully
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '404':
+            description: No products has been added to the cart
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No products has been added to the cart
+
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+  
+  /order:
+  
+    post:
+        tags:
+          - purchase
+        summary: Checkout products from cart
+        description: Checkout products from cart by filling the address and payment information
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCreateDto'
+          required: true
+        responses:
+          '201':
+            description: Order has been placed successfully
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/IdentityResponseDto'
+          '400':
+            description: Bad request object
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: Bad request 
+                    description:
+                      type: string
+                      example: Server cannot process the request
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+
+    get:
+        tags:
+          - purchase
+        summary: Get complete order history
+        description: Get complete order history of a customer
+        responses:
+          '200':
+            description: Successful operation, complete order history has been returned
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrderResponseDto'
+          '204':
+            description: No order history found for the customer
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+    
+  /order/{order-id}:
+    get:
+        tags:
+          - purchase
+        summary: Get order details with order id
+        description: Get order details with order id
+        parameters:
+          - name: order-id
+            in: path
+            description: Id of order 
+            required: true
+            schema:
+              type: string
+              format: uuid
+        responses:
+          '200':
+            description: Successful operation, order details has been returned for the given id
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/OrderResponseDto'  
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 401
+                    message:
+                      type: string
+                      example: Unauthorized
+                    description:
+                      type: string
+                      example: Lacks valid authentication credentials
+          '404':
+            description: No order has been found for the given id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: Not found
+                    description:
+                      type: string
+                      example: No order has been found for the given id
+
+          '500':
+            description: Internal server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status_code:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: Internal server error
+                    description:
+                      type: string
+                      example: Server encountered an unexpected condition
+  
+
+          
+components:
+  schemas:
+  
+
+    UserAccountCreateDto:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: Hariharan
+        last_name:
+          type: string
+          example: A S
+        email:
+          type: string
+          example: tempemail@gmail.com
+        password:
+          type: string
+          example: 'mklOPT1@3ziqml'
+        role:
+          type: string
+          example: 'customer'
+        phone:
+          type: integer
+          format: int64
+          example: 6542340976
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAddressCreateDto'
+      
+    UserAccountLogInDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: tempemail@gmail.com
+        password:
+          type: string
+          example: 'mklOPT1@3'
+  
+    UserAccountUpdateDto:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: Hariharan
+        last_name:
+          type: string
+          example: A S
+        email:
+          type: string
+          example: tempemail@gmail.com
+        password:
+          type: string
+          example: 'mklOPT1@3ziqml'
+        role:
+          type: string
+          example: 'customer'
+        phone:
+          type: integer
+          format: int64
+          example: 6542340976
+          
+    UserAccountResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 9245fe4a-d402-451c-b9ed-9c1a04247482
+        first_name:
+          type: string
+          example: Hariharan
+        last_name:
+          type: string
+          example: A S
+        email:
+          type: string
+          example: tempemail@gmail.com
+        role:
+          type: string
+          example: 'customer'
+        phone:
+          type: integer
+          format: int64
+          example: 6542340976
+    
+    TokenResponseDto:
+      properties:
+        access_token:
+          type: string
+          example: eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ.dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+        token_type:
+          type: string
+          example: Bearer
+
+
+    UserAddressCreateDto:
+     type: object
+     properties:
+              name:
+                type: string
+                example: Hariharan A S
+              type:
+                type: string
+                example: Home
+              phone:
+                type: integer
+                format: int64
+                example: 6542340976
+              line1:
+                type: string
+                example: '4/576B'
+              line2:
+                type: string
+                example: 'Green Park layout'
+              city:
+                type: string
+                example: 'Coimbatore'
+              pincode:
+                type: integer
+                example: 642126
+              state:
+                type: string
+                example: Tamil Nadu
+              country:
+                type: string
+                example: India
+    
+    UserAddressUpdateDto:
+     type: object
+     properties:
+              name:
+                type: string
+                example: Hariharan A S
+              type:
+                type: string
+                example: Home
+              phone:
+                type: integer
+                format: int64
+                example: 6542340976
+              line1:
+                type: string
+                example: '4/576B'
+              line2:
+                type: string
+                example: 'Green Park layout'
+              city:
+                type: string
+                example: 'Coimbatore'
+              pincode:
+                type: integer
+                example: 642126
+              state:
+                type: string
+                example: Tamil Nadu
+              country:
+                type: string
+                example: India
+  
+    UserAddressResponseDto:
+     type: object
+     properties:
+              id:
+                type: string
+                format: uuid
+                example: 9245fe4a-d402-451c-b9ed-9c1a04247482
+              name:
+                type: string
+                example: Hariharan A S
+              type:
+                type: string
+                example: Home
+              phone:
+                type: integer
+                format: int64
+                example: 6542340976
+              line1:
+                type: string
+                example: '4/576B'
+              line2:
+                type: string
+                example: 'Green Park layout'
+              city:
+                type: string
+                example: 'Coimbatore'
+              pincode:
+                type: integer
+                example: 642126
+              state:
+                type: string
+                example: Tamil Nadu
+              country:
+                type: string
+                example: India
+
+
+    UserPaymentCreateDto:
+      type: object
+      properties:
+        type:
+          type: string
+          example: UPI
+        name:
+          type: string
+          example: SBI UPI - GPay
+        card_or_upi_value:
+          type: string
+          example: hariharan@oksbi
+        expiry:
+          type: string
+          format: date-time
+          example:
+    
+    UserPaymentUpdateDto:
+      type: object
+      properties:
+        type:
+          type: string
+          example: UPI
+        name:
+          type: string
+          example: SBI UPI - GPay
+        card_or_upi_value:
+          type: string
+          example: hariharan@oksbi
+        expiry:
+          type: string
+          format: date-time
+          example:
+          
+    UserPaymentResponseDto:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            example: b8f254e9-b015-4938-be80-8e43d759fda5
+          type:
+            type: string
+            example: UPI
+          name:
+            type: string
+            example: SBI UPI - GPay
+          card_or_upi_value:
+            type: string
+            example: hariharan@oksbi
+
+
+    ProductCreateDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Google Pixel 7 Pro'
+        price:
+          type: integer
+          example: 75700
+        description:
+          type: string
+          example: The Pixel 7 Pro triple rear camera system includes a 5x telephoto lens and has a 30x Super Res Zoom for high-quality photos from far away. 
+        image:
+          type: string
+          format: byte[]
+          example: 
+        available_count:
+          type: integer
+          example: 10000
+        visibility:
+          type: boolean
+          example: true 
+        category:
+          type: string
+          example: 'Mobiles, Computers'
+  
+    ProductUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Google Pixel 7 Pro'
+        price:
+          type: integer
+          example: 75700
+        description:
+          type: string
+          example: The Pixel 7 Pro triple rear camera system includes a 5x telephoto lens and has a 30x Super Res Zoom for high-quality photos from far away. 
+        image:
+          type: string
+          format: byte[]
+          example: 
+        available_count:
+          type: integer
+          example: 10000
+        visibility:
+          type: string
+          example: 'Public' 
+        category:
+          type: string
+          example: 'Mobiles, Computers'
+          
+    ProductResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 993bdd58-c7df-4835-8448-03ea69111755
+        name:
+          type: string
+          example: 'Google Pixel 7 Pro'
+        price:
+          type: integer
+          example: 75700
+        description:
+          type: string
+          example: The Pixel 7 Pro triple rear camera system includes a 5x telephoto lens and has a 30x Super Res Zoom for high-quality photos from far away. 
+        image:
+          type: string
+          format: byte[]
+          example: 
+        available_count:
+          type: integer
+          example: 10000
+        visibility:
+          type: boolean
+          example: true 
+        category:
+          type: string
+          example: 'Mobiles, Computers'
+
+
+      
+    WishlistCreateDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Gadgets
+        wishlist_item:
+          type: array
+          items: 
+            $ref: '#/components/schemas/WishlistDto'
+    
+    WishlistUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Gadgets
+        wishlist_item:
+          type: array
+          items: 
+            $ref: '#/components/schemas/WishlistDto'
+    
+    WishlistResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 563bdj58-c7df-4835-8448-03ea69111755
+        name:
+          type: string
+          example: Gadgets
+        wishlist_item:
+          type: array
+          items: 
+            $ref: '#/components/schemas/WishlistDto'
+    
+    WishlistDto:
+      type: object
+      properties:
+        product_id:
+          type: string
+          format: uuid
+          example: 993bdd58-c7df-4835-8448-03ea69111755
+        
+
+    
+    AddToCartDto:
+      type: object
+      properties:
+        product_id:
+          type: string
+          format: uuid
+          example: 993bdd58-c7df-4835-8448-03ea69111755
+        quantity:
+          type: integer
+          example: 1
+      
+    CartUpdateDto:
+          type: array
+          items:
+              $ref: '#/components/schemas/AddToCartDto'
+          
+    CartResponseDto:
+          type: array
+          items:
+              $ref: '#/components/schemas/AddToCartDto'
+    
+
+
+    OrderCreateDto:
+      type: object
+      properties:
+        address_id:
+          type: string
+          format: uuid
+          example: eb994d45-02b6-4d68-843b-118c2f1a3a4a
+        payment_method:
+          type: string
+          example: UPI
+        payment_id:
+          type: string
+          format: uuid
+          example: c95633e6-19f9-4640-8d23-8250ebe0a82a
+    
+    OrderResponseDto:
+      type: object
+      properties:
+        order_id:
+          type: string
+          format: uuid
+          example: a406fb25-ba5a-41f7-86ea-3058ce40ae78
+        address_id:
+          type: string
+          format: uuid
+          example: eb994d45-02b6-4d68-843b-118c2f1a3a4a
+        payment_method:
+          type: string
+          example: UPI
+        payment_id:
+          type: string
+          format: uuid
+          example: c95633e6-19f9-4640-8d23-8250ebe0a82a
+        total:
+          type: integer
+          example: 75700
+        order_item:
+          type: array
+          items:
+              $ref: '#/components/schemas/ProductFromCartResponseDto'
+
+    ProductFromCartResponseDto:
+      type: object
+      properties:
+        product_id:
+          type: string
+          format: uuid
+          example: 993bdd58-c7df-4835-8448-03ea69111755
+        quantity:
+          type: integer
+          example: 1
+        status:
+          type: string
+          example: "Processing"
+          
+          
+    IdentityResponseDto:
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 9245fe4a-d402-451c-b9ed-9c1a04247482
+    
+    ErrorResponseDto:
+      properties:
+        status_code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+    
+
+          
+
+         
+
+
